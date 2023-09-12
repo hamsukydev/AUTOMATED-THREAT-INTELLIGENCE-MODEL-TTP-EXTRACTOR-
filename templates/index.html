@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>ATIM</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/static/assets/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Logis
+    * Updated: Jul 27 2023 with Bootstrap v5.3.1
+    * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+        <a href="index.html" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <h1>ATIM</h1>
+        </a>
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        <nav id="navbar" class="navbar">
+
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+<!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+        <div class="row gy-4 d-flex justify-content-between">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h2 data-aos="fade-up" style="display: flex;">AUTOMATED THREAT INTELLIGENCE MODEL</h2><small
+                    style="font-size: 18px;font-weight: 800; margin-top:-20px; margin-bottom:40px">(TTP
+                EXTRACTOR)</small>
+                <p data-aos="fade-up" data-aos-delay="100">The description of the model:- Introducing the 'Cyber Threat
+                    Intelligence Automator' – a cutting-edge app that automates the generation of actionable cyber
+                    threat intelligence reports using AI, NLP, and machine learning. It empowers security professionals
+                    with streamlined insights, enhancing response times and facilitating threat hunting. Developed by a
+                    cybersecurity enthusiast, it bridges the gap between unstructured threat data and strategic defence
+                    measures</p>
+
+                <div style="display: flex; justify-content: space-around;">
+                    <div class="row gy-3" style="width:370px">
+
+
+                        <form action="{{url_for('upload_file')}}" enctype="multipart/form-data"
+                              class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
+                              data-aos-delay="200" method="POST">
+
+
+                            <!-- <input type="file" name="file" class="form-control" placeholder="ZIP code or CitY"> -->
+                            {{ form.doc.label (class="form-label", style="font-size:13px") }}
+                            <label style="font-size: 12px; color: red; width:350px; font-weight: 800;" for="">* PDF
+                                Files Only</label>
+                            {{ form.doc (class="form-control", style="font-size:13px; width:300px")}}
+                            {% if form.doc.errors %}
+                            {% for error in form.doc.errors %}
+                            <span class="text-danger" style="color:red; font-size:9px">{{ error }}</span><br>
+                            {% endfor %}
+                            {% endif %}
+
+
+                            {{ form.submit( class="btn btn-primary", style="background-color:#66cc66; border:none;
+                            color:white; font-weight:200;font-size:15px;width:300px;padding:5px") }}
+
+                            {% with messages= get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert border-1 shadow-sm" {{category}}
+                                 style=" color:#fff; background-color: #00b300; padding:5px;width:200px;align-items: center; font-size: 10px; text-align:center;">
+                                {{message}}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                    </div>
+                    <div class="row gy-3">
+                        <a href="{{ url_for('scan') }}">
+                            <div style="margin-left:1px;padding-top:10px;border-radius:8px; height:80px;background-color:gray;width:220px; align-items: center; justify-content:center; display: flex;">
+
+                                <h6 style="text-transform: capitalize; font-weight: 300;color:#fff; font-size:14px; width:160px; padding-left:10px;">
+                                    Click to paste the content of your document here</h6>
+                                <img src="../static/assets/img/contract1.png" alt="the document"
+                                     style="width:50px; height:50px; margin-bottom: 7px;">
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+
+                    <div class="col-lg-3 col-6">
+                        <div style="width:200px;">
+
+                            <div class="col">
+                                {{ form.option1.label(class="form-label", style="font-size:13px; text-align:center") }}
+                                {% if form.option1.errors %}
+                                {{ form.option1(class="form-control is-invalid") }}
+                                <ul class="errors">
+                                    {% for error in form.option1.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                {{ form.option1(class="form-control", style="font-size:14px") }}
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+
+                    <div class="col-lg-3 col-6" style="margin-left:50px;">
+                        <div style="width:200px;">
+
+                            <div class="col">
+                                {{ form.option2.label(class="form-label", style="font-size:13px; text-align:center") }}
+                                {% if form.option2.errors %}
+                                {{ form.option2(class="form-control is-invalid") }}
+                                <ul class="errors">
+                                    {% for error in form.option2.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                {{ form.option2(class="form-control") }}
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-6" style="margin-left:50px;">
+                        <div style="width:200px;">
+
+                            <div class="col">
+                                {{ form.option3.label(class="form-label",style="font-size:13px; text-align:center") }}
+                                {% if form.option3.errors %}
+                                {{ form.option3(class="form-control is-invalid") }}
+                                <ul class="errors">
+                                    {% for error in form.option3.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                {{ form.option3(class="form-control", style="font-size:14px") }}
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <!-- Add this section to your HTML template to display the uploaded filename -->
+                    {% if filee %}
+                    <div class="uploaded-filename">
+                        <p><strong>Uploaded File:</strong> {{ filee.filename }}</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+                </form>
+
+                <!-- ... (Previous HTML code) ... -->
+
+                </form> <!-- End of the form tag -->
+
+
+            </div>
+
+
+            <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                <img src="/static/assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Add this section to your HTML template to display the analysis results -->
+    <!-- Add this section to your HTML template to display the analysis results -->
+    {% if analysis_results %}
+    <div class="analysis-results">
+        <h3>Analysis Results</h3>
+        <ul>
+            <li><strong>Name:</strong> {{ analysis_results.get('name', 'N/A') }}</li>
+            <li><strong>Country:</strong> {{ analysis_results.get('country', 'N/A') }}</li>
+            <li><strong>Motivation:</strong> {{ analysis_results.get('motivation', 'N/A') }}</li>
+            <li><strong>First seen:</strong> {{ analysis_results.get('first seen', 'N/A') }}</li>
+            <li><strong>Description:</strong> {{ analysis_results.get('description', 'N/A') }}</li>
+            <li><strong>Observed:</strong> {{ analysis_results.get('observed', 'N/A') }}</li>
+            <li><strong>Tools Used:</strong> {{ analysis_results.get('tools used', 'N/A') }}</li>
+        </ul>
+    </div>
+    {% endif %}
+
+
+</section><!-- End Hero Section -->
+
+<main id="main">
+
+
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/static/assets/vendor/aos/aos.js"></script>
+    <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/static/assets/js/main.js"></script>
+
+</body>
+
+</html>
